@@ -8,8 +8,11 @@ import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.qa.tvompower.util.WebEventListener;
 
 public class TestBase {
 	
@@ -40,6 +43,13 @@ public class TestBase {
 			System.setProperty("webdriver.gecko.driver", "drivers/Firefox/geckodriver.exe");	
 			driver = new FirefoxDriver(); 
 		}
+		
+		e_driver = new EventFiringWebDriver(driver);
+		// Now create object of EventListerHandler to register it with EventFiringWebDriver
+		eventListener = new WebEventListener();
+		e_driver.register(eventListener);
+		driver = e_driver;
+		
 		driver.manage().window().maximize();
 		wait= new WebDriverWait(driver, 50);
 		driver.get(prop.getProperty("url"));
