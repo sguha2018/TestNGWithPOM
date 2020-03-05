@@ -8,7 +8,7 @@ import com.qa.tvompower.base.TestBase;
 
 public class AddProfilePage extends TestBase{
 	
-	@FindBy(xpath="//button[@type='submit']")
+	@FindBy(xpath="//button[@type='submit' and contains(text(),'Next')]")
 	WebElement nextButton;
 	
 	//initializing page object
