@@ -19,6 +19,8 @@ public class TestBase {
 	public static WebDriver driver;
 	public static Properties prop;
 	public static WebDriverWait wait;
+	public static EventFiringWebDriver e_driver;
+	public static WebEventListener eventListener;
 
 	public TestBase(){
 		try {
